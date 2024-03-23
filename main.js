@@ -1,4 +1,4 @@
-function addByDevelop1(a, b) {
+function addByDevelop2(a, b) {
   return a + b;
 }
 
