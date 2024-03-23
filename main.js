@@ -2,7 +2,7 @@ function addByDevelop2(a, b) {
   return a + b;
 }
 
-function subtractByDevelop1(a, b) {
+function subtractByDevelop2(a, b) {
   return a - b;
 }
 
