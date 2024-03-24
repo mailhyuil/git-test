@@ -14,10 +14,10 @@ type post struct {
 }
 
 func main(){
-  hyuil := user {
-    name: "hyuil",
+  sb := user {
+    name: "sb",
     age: 25,
   }
-  fmt.Println(hyuil.name)
-  fmt.Println(hyuil.age)
+  fmt.Println(sb.name)
+  fmt.Println(sb.age)
 }
