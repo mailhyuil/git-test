@@ -1,23 +1,31 @@
 package main
 
-import "fmt"
+import (
+	"log"
+	"net/http"
 
-type user struct {
-  name string
-  age int
-  posts []post
+	"github.com/PuerkitoBio/goquery"
+)
+
+var baseUrl = "https://www.fmkorea.com/index.php?mid=best&page=5"
+
+func main() {
+	getPages()
 }
 
-type post struct {
-  title string
-  content string
-}
-
-func main(){
-  sb := user {
-    name: "sb",
-    age: 25,
-  }
-  fmt.Println(sb.name)
-  fmt.Println(sb.age)
+func getPages() {
+	res, err := http.Get(baseUrl)
+	if err != nil || res.StatusCode > 400 {
+		log.Fatalln("Request failed with status code", res.StatusCode)
+	}
+	
+	doc, err := goquery.NewDocumentFromReader(res.Body)
+	if err != nil {
+		log.Fatalln("Error loading HTTP response body. ", err)
+	}
+	defer res.Body.Close()
+	
+	doc.Find(".bd_pg").Each(func(i int, s *goquery.Selection) {
+		log.Println(s.Html())
+	})
 }
